@@ -1,5 +1,7 @@
 import { Hono } from "hono";
 
+import { cors } from "hono/cors";
+
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 
@@ -15,6 +17,7 @@ const app = new Hono<{
   };
 }>();
 
+app.use("/*", cors())
 // c --> context -> you will get all info in context
 app.get("/", async (c) => {
   return c.text("Server running");
