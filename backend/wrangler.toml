@@ -1,0 +1,8 @@
+name = "backend"
+compatibility_date = "2023-12-01"
+
+# Environment variables in cloudflare workers access from wrangler.toml file 
+
+[vars]
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMmVlODZiNjktOGFkZi00OGVkLWIwZGYtZmI4YTBkOWNjMzUxIiwidGVuYW50X2lkIjoiMGM4MWNiYWJhZWZmOTg0ODllOTViYmY0NDlmZTM4NGRhYTMxZTA1YTY0YzMxNTI2N2E4MWRjYjJmYzU0NTU3OCIsImludGVybmFsX3NlY3JldCI6IjU3YzMxMDhiLTNhMjUtNGU2ZS05ZmUxLTc4NDVlZjQxNmMzMCJ9.-jckWXlEmvjIymsHAz8qrYBr8ZRM8oN3HoH03BLkZZ0"
+JWT_SECRET="100x-medium"# MY_VAR = "my-variable"
