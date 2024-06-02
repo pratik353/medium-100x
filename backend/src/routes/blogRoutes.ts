@@ -20,8 +20,8 @@ export const blogRoutes = new Hono<{
 // Middleware in HONO
 blogRoutes.use("/*", async (c, next) => {
   const header = c.req.header("Authorization") || "";
-  const user = await verify(header, c.env.JWT_SECRET);
   try {
+    const user = await verify(header, c.env.JWT_SECRET);
     if (user) {
       //@ts-ignore
       c.set("userId", user.id);
@@ -115,9 +115,17 @@ blogRoutes.get("/bulk", async (c) => {
 
   try {
     const blog = await prisma.blog.findMany({
-      // select: {
-      //   title: true,
-      // },
+      select: {
+        title: true,
+        content: true,
+        id: true,
+        author:{
+          select: {
+            name: true,
+            id: true
+          }
+        }
+      },
     });
 
     return c.json({
@@ -143,6 +151,19 @@ blogRoutes.get("/:id", async (c) => {
       where: {
         id: id,
       },
+      select:{
+        id: true,
+        content: true,
+        title: true, 
+        published: true,
+        author:{
+          select:{
+            name:true,
+            id: true
+          }
+        }
+      }
+
     });
 
     return c.json({

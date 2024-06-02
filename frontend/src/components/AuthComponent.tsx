@@ -21,7 +21,7 @@ const AuthComponent = ({ type }: { type: "signin" | "signup" }) => {
 
       const jwt = res.data.jwt;
       localStorage.setItem("token", jwt);
-      navigate("/blog");
+      navigate("/blogs");
     } catch (error) {
       console.log(error);
       alert("Error while signup")
@@ -47,7 +47,7 @@ const AuthComponent = ({ type }: { type: "signin" | "signup" }) => {
           </div>
         </div>
         <div className="flex flex-col gap-4 mt-4">
-          <LabeledInput
+          { type === "signup" && <LabeledInput
             label="Name"
             placeholder="enter your name"
             value={postInputs.name!}
@@ -57,7 +57,7 @@ const AuthComponent = ({ type }: { type: "signin" | "signup" }) => {
                 name: e.target.value,
               }));
             }}
-          />
+          />}
           <LabeledInput
             label="Email"
             placeholder="m@example.com"
